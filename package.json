@@ -2,7 +2,8 @@
   "name": "cuddle_cicd",
   "packageManager": "yarn@4.4.1",
   "devDependencies": {
-    "http-server": "^14.1.1"
+    "http-server": "^14.1.1",
+    "typescript": "^5.7.2"
   },
   "scripts": {
     "start": "http-server ."
