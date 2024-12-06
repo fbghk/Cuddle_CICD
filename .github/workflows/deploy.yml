@@ -1,0 +1,27 @@
+name: Deploy to S3
+
+on:
+  push:
+    branches:
+      - main  # main 브랜치에 푸시될 때마다 실행됩니다.
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest  # Ubuntu 환경에서 실행
+
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@v2  # 코드 체크아웃
+
+      - name: Set up AWS CLI
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}  # GitHub Secrets에 저장된 AWS Access Key
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}  # GitHub Secrets에 저장된 AWS Secret Key
+          aws-region: ap-northeast-2  # 예: ap-northeast-2 (서울)
+
+      - name: Sync files to S3
+        run: |
+          aws s3 sync ./dist/ s3://dptmtmfl/ --delete
+        # dist 폴더에서 S3 버킷으로 파일을 동기화합니다.
+        # --delete 옵션은 S3에서 더 이상 존재하지 않는 파일을 삭제합니다.
