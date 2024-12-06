@@ -107,5 +107,7 @@
     /* Completeness */
     // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
     "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
-  }
+  },
+  "include": ["src"],                          // 타입스크립트가 포함할 파일 경로
+  "exclude": ["node_modules"]                 // 제외할 파일 경로
 }
