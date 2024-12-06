@@ -2,6 +2,8 @@
   "name": "cuddle_cicd",
   "packageManager": "yarn@4.4.1",
   "devDependencies": {
+    "@swc/cli": "^0.5.2",
+    "@swc/core": "^1.10.0",
     "http-server": "^14.1.1",
     "typescript": "^5.7.2"
   },
